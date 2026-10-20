@@ -40,9 +40,8 @@ public class Main {
             System.out.println("9. Xem lich su giao dich");
             System.out.println("10. Quan ly kho phim");
             System.out.println("0. Thoat");
-            System.out.print("Moi ban chon chuc nang (0-10): ");
             
-            chon = Integer.parseInt(ns.nextLine()); 
+            chon = Inputter.inputInt(ns, "Moi ban chon chuc nang (0-10): ");
 
             switch (chon) {
                 case 1:
