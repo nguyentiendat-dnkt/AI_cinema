@@ -76,6 +76,7 @@ public class User extends Member{
     }
     
     public void checkIn(){
+        System.out.println("--- ĐIỂM DANH HÀNG NGÀY ---");
         int dailyReward = 10;
         wallet.addBonusCoin(dailyReward);
         String transId = "T" + (transactions.size() + 1);
@@ -100,6 +101,7 @@ public class User extends Member{
     }
     
     public void viewTransactionHistory(){
+        System.out.println("\n--- LỊCH SỬ GIAO DỊCH ---");
         if(transactions.isEmpty()){
             System.out.println("Chua co giao dich");
             return;

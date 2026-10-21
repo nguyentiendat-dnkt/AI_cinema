@@ -65,12 +65,9 @@ public class Wallet {
         }
         return true;
     }
-    
-    public double viewWallet(){
-        return mainCoin + bonusCoin;
-    }
 
     public void showWalletInfo() {
+        System.out.println("\n--- SỐ DƯ VÍ ---");
         System.out.println("Main Coin: " + mainCoin);
         System.out.println("Bonus Coin: " + bonusCoin);
         System.out.println("Tong so du: " + (mainCoin + bonusCoin) + " Coins");

@@ -20,7 +20,7 @@ public class Inputter {
         boolean lap = true;
         do {
             try {
-                System.out.println(tb);
+                System.out.print(tb);
                 kq = sc.nextInt();
                 lap = false;
                 return kq;

@@ -10,7 +10,14 @@ import model.Member;
 import model.Membership;
 import model.Movie;
 import java.util.ArrayList;
+import model.Admin;
+import model.ContentManager;
 import model.Inputter;
+import view.UserMenu;
+import model.User;
+import model.Wallet;
+import view.AdminMenu;
+import view.CmMenu;
 
 /**
  *
@@ -23,62 +30,37 @@ public class Main {
      */
     public static void main(String[] args) {
         Scanner ns = new Scanner(System.in);
-        Member member = new Member("M01", "Dat");
+        UserMenu userMenu = new UserMenu();
+        CmMenu cmMenu = new CmMenu();
+        ContentManager cm = new ContentManager();
+        AdminMenu adMenu = new AdminMenu();
+        Admin admin = new Admin();
+        User user = new User("M1", "Dat", new Wallet(0, 0));
         Membership plan = new Membership("Weekly", 30, false);
         ArrayList<Movie> movies = new ArrayList<>(); 
         int chon;
         do {            
-            System.out.println("----------HE THONG QUAN LY AI CINEMA----------"
-                              +"-         1. USER                            -"
-                              +"-         2. CONTENT MANAGEMENT              -"
-                              +"-         3. ADMIN                           -"
-                              +"-         4. Thoat chuong trinh              -"
-                              +"----------------------------------------------");
+            System.out.println("----------HE THONG QUAN LY AI CINEMA----------\n"
+                              +"-         1. USER                            -\n"
+                              +"-         2. CONTENT MANAGEMENT              -\n"
+                              +"-         3. ADMIN                           -\n"
+                              +"-         0. Thoat chuong trinh              -\n"
+                              +"----------------------------------------------\n");
             
             chon = Inputter.inputInt(ns, "Ban la ai???: ");
 
             switch (chon) {
                 case 1:
-                    menuUser(ns);
-//                    if (movies.isEmpty()) {
-//                        System.out.println("Kho phim hien dang rong!");
-//                    } else {
-//                        for (Movie movie : movies) {
-//                            movie.showMovie();
-//                        }
-//                    }
+                    userMenu.showUserMenu(ns, movies, user, plan);
                     break;
                     
                 case 2:
-                    menuCM(ns);
-//                    System.out.println("--- MUA PHIM ---");
-//                    if (movies.isEmpty()) {
-//                        System.out.println("Kho phim hien dang rong!");
-//                        break;
-//                    }
-//                    for (Movie movie : movies) {
-//                        movie.showMovie();
-//                    }
-//                    String buyId = Inputter.inputString(ns, "Nhap ID phim: ");
-//                    Movie buyMovie = searchById(buyId, movies);
-//                    member.purchaseMovie(buyMovie);
+                    cmMenu.showCmMenu(ns, cm);
                     break;
                     
                 case 3:
-                    menuAdmin(ns);
-//                    System.out.println("--- XEM PHIM ---");
-//                    for (Movie movie : movies) {
-//                        movie.showMovie();
-//                    }
-//                    String watchId = Inputter.inputString(ns, "Nhap ma phim muon xem: ");
-//                    Movie watchMovie = searchById(watchId, movies);
-//                    member.watchMovie(watchMovie);
+                    adMenu.showAdminMenu(ns, admin);
                     break;
-                    
-//                case 4:
-//                    System.out.println("--- ĐIỂM DANH HÀNG NGÀY ---");
-//                    member.checkIn();
-//                    break;
 //                    
 //                case 5:
 //                    System.out.println("--- ĐĂNG KÝ GÓI THÀNH VIÊN ---");
