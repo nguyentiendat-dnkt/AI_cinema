@@ -16,7 +16,19 @@ public class Inputter {
     }
     
     public static int inputInt(Scanner sc, String tb) {
-        System.out.print(tb);
-        return Integer.parseInt(sc.nextLine());
+        int kq = 0;
+        boolean lap = true;
+        do {
+            try {
+                System.out.println(tb);
+                kq = sc.nextInt();
+                lap = false;
+                return kq;
+            } catch (Exception e) {
+                System.out.println("Ban da nhap sai. Vui long nhap lai!");
+                sc.nextLine();
+            }
+        } while (lap);
+        return kq;
     }
 }
