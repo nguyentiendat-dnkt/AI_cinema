@@ -9,7 +9,7 @@ import java.util.Scanner;
 import model.Member;
 import model.Membership;
 import model.Movie;
-import java.util.ArrayList;
+import java.util.HashMap;
 import model.Admin;
 import model.ContentManager;
 import model.Inputter;
@@ -37,7 +37,7 @@ public class Main {
         Admin admin = new Admin();
         User user = new User("M1", "Dat", new Wallet(0, 0));
         Membership plan = new Membership("Weekly", 30, false);
-        ArrayList<Movie> movies = new ArrayList<>(); 
+        HashMap<String, Movie> movies = new HashMap<>();
         int chon;
         do {            
             System.out.println("----------HE THONG QUAN LY AI CINEMA----------\n"
@@ -53,9 +53,8 @@ public class Main {
                 case 1:
                     userMenu.showUserMenu(ns, movies, user, plan);
                     break;
-                    
                 case 2:
-                    cmMenu.showCmMenu(ns, cm);
+                    cmMenu.showCmMenu(ns, cm, movies);
                     break;
                     
                 case 3:
@@ -122,7 +121,7 @@ public class Main {
 //                            movies.add(newMovie);
 //                            System.out.println("Them phim moi thanh cong!");
 //                            break;
-//
+
 //                        case 2:
 //                            String deleteId = Inputter.inputString(ns, "Nhap ID phim can xoa: ");
 //                            Movie deleteMovie = searchById(deleteId, movies);
@@ -156,16 +155,5 @@ public class Main {
 
         ns.close();
     }
-   
-    public static Movie searchById(String movieId, ArrayList<Movie> movies) {
-        if (movieId == null || movies == null){
-            return null;
-        }
-        for (Movie movie : movies) {
-            if (movie.getMovieId().equalsIgnoreCase(movieId)) {
-                return movie;
-            }
-        }
-        return null;
-    }
+
 }   

@@ -4,7 +4,11 @@
  */
 package model;
 
+import ct.Main;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  *
@@ -20,7 +24,8 @@ public class ContentManager extends Member{
         super(memberId, name);
     }
     
-    public void addMovie(){
+    public void addMovie(Scanner sc, HashMap<String, Movie> movies){
+        System.out.println("--- THEM PHIM MOI ---");
     }
     
     public void deleteMovie(){

@@ -4,16 +4,18 @@
  */
 package view;
 
+import java.util.HashMap;
 import java.util.Scanner;
 import model.ContentManager;
 import model.Inputter;
+import model.Movie;
 
 /**
  *
  * @author admin
  */
 public class CmMenu {
-    public void showCmMenu(Scanner scanner, ContentManager cm){
+    public void showCmMenu(Scanner scanner, ContentManager cm, HashMap<String, Movie> movies){
         int choice;
         do {
             System.out.println("----------CONTENT MANAGER----------\n"
@@ -25,7 +27,7 @@ public class CmMenu {
             choice = Inputter.inputInt(scanner, "Chon chuc nang: ");
             switch (choice) {
                 case 1:
-                    cm.addMovie();
+                    cm.addMovie(scanner, movies);
                     break;
                 case 2:
                     cm.deleteMovie();

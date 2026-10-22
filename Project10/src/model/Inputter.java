@@ -31,4 +31,10 @@ public class Inputter {
         } while (lap);
         return kq;
     }
+    
+    public static double inputDouble (Scanner sc, String tb) {
+        System.out.print(tb);
+        double kq = sc.nextDouble();
+        return kq;
+    }
 }

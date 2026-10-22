@@ -4,8 +4,7 @@
  */
 package view;
 
-import static ct.Main.searchById;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import model.Inputter;
 import model.Membership;
@@ -18,7 +17,7 @@ import model.User;
  */
 public class UserMenu {
     
-    public void showUserMenu(Scanner scanner, ArrayList<Movie> movies, User user, Membership plan){
+    public void showUserMenu(Scanner scanner, HashMap<String, Movie> movies, User user, Membership plan){
         int choice;
         do {
             System.out.println("--------------------USER--------------------\n"
@@ -63,36 +62,36 @@ public class UserMenu {
         } while (choice != 0);
     }
 
-    private void showMovieList(ArrayList<Movie> movies) {
+    private void showMovieList(HashMap<String, Movie> movies) {
         if (movies.isEmpty()) {
             System.out.println("Kho phim hien dang rong!");
         }else {
-            for (Movie movie : movies) {
+            for (Movie movie : movies.values()) {
                 movie.showMovie();
             }
         }
     }
 
-    private void buyMovie(Scanner scanner, ArrayList<Movie> movies, User user) {
+    private void buyMovie(Scanner scanner, HashMap<String, Movie> movies, User user) {
         System.out.println("--- MUA PHIM ---");
         if (movies.isEmpty()) {
             System.out.println("Kho phim hien dang rong!");
         }
-        for (Movie movie : movies) {
+        for (Movie movie : movies.values()) {
             movie.showMovie();
         }
         String buyId = Inputter.inputString(scanner, "Nhap ID phim: ");
-        Movie buyMovie = searchById(buyId, movies);
+        Movie buyMovie = movies.get(buyId);
         user.purchaseMovie(buyMovie);
     }
 
-    private void watchMovie(Scanner scanner, ArrayList<Movie> movies, User user) {
+    private void watchMovie(Scanner scanner, HashMap<String, Movie> movies, User user) {
         System.out.println("--- XEM PHIM ---");
-        for (Movie movie : movies) {
+        for (Movie movie : movies.values()) {
             movie.showMovie();
         }
         String watchId = Inputter.inputString(scanner, "Nhap ma phim muon xem: ");
-        Movie watchMovie = searchById(watchId, movies);
+        Movie watchMovie = movies.get(watchId);
         user.watchMovie(watchMovie);
     }
 
