@@ -21,7 +21,7 @@ public class Inputter {
         do {
             try {
                 System.out.print(tb);
-                kq = sc.nextInt();
+                kq = Integer.parseInt(sc.nextLine());
                 lap = false;
                 return kq;
             } catch (Exception e) {
@@ -32,9 +32,4 @@ public class Inputter {
         return kq;
     }
     
-    public static double inputDouble (Scanner sc, String tb) {
-        System.out.print(tb);
-        double kq = sc.nextDouble();
-        return kq;
-    }
 }
