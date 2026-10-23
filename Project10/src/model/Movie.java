@@ -4,7 +4,6 @@
  */
 package model;
 
-import java.time.LocalDate;
 
 /**
  *
@@ -16,20 +15,18 @@ public class Movie {
     private String genre;
     private int moviePrice;
     private boolean isFree;
-    private LocalDate releaseDate;
     private int duration;
     private String producer;
 
     public Movie() {
     }
 
-    public Movie(String movieId, String title, String genre, int moviePrice, boolean isFree, LocalDate releaseDate, int duration, String producer) {
+    public Movie(String movieId, String title, String genre, int moviePrice, boolean isFree, int duration, String producer) {
         this.movieId = movieId;
         this.title = title;
         this.genre = genre;
         this.moviePrice = moviePrice;
         this.isFree = isFree;
-        this.releaseDate = releaseDate;
         this.duration = duration;
         this.producer = producer;
     }
@@ -74,13 +71,6 @@ public class Movie {
         this.isFree = isFree;
     }
 
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
-    }
 
     public int getDuration() {
         return duration;
@@ -102,7 +92,7 @@ public class Movie {
    public void showMovie() {
         String priceText = isFree ? "Miễn phí" : moviePrice + " Coins";
         System.out.printf("| %-8s | %-20s | %-12s | %-10s | %-10s | %-4d phút | %-15s |\n",
-                movieId, title, genre, priceText, releaseDate, duration, producer);
+                movieId, title, genre, priceText, duration, producer);
     }
     
    @Override
@@ -113,7 +103,6 @@ public class Movie {
                 ", genre='" + genre + '\'' +
                 ", moviePrice=" + (isFree ? 0 : moviePrice) +
                 ", isFree=" + isFree +
-                ", releaseDate=" + releaseDate +
                 ", duration=" + duration + " mins" +
                 ", producer='" + producer + '\'' +
                 '}';

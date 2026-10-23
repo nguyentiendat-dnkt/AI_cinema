@@ -30,10 +30,10 @@ public class CmMenu {
                     cm.addMovie(scanner, movies);
                     break;
                 case 2:
-                    cm.deleteMovie();
+                    cm.deleteMovie(scanner, movies);
                     break;
                 case 3:
-                    cm.editMovie();
+                    cm.editMovie(scanner, movies);
                     break;
                 case 0:
                     System.out.println("Quay lai menu chon role");

@@ -4,28 +4,34 @@
  */
 package model;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Nguyen Kim Thuy Duon
  */
 public class Admin extends Member{
     private int dailyReward;
-    private int exchangeCoin;
 
     public Admin() {
+        super();
     }
 
-    public Admin(int dailyReward, int exchangeCoin, String memberId, String name) {
+    public Admin(int dailyReward, String memberId, String name) {
         super(memberId, name);
         this.dailyReward = dailyReward;
-        this.exchangeCoin = exchangeCoin;
+    }
+
+    public int getDailyReward() {
+        return dailyReward;
     }
     
-    public void dailyReward(){
+    public void setDailyReward(Scanner sc){
+        this.dailyReward = Inputter.inputInt(sc, "So coin diem danh hang ngay: ");
+        System.out.println("Set coin thanh cong");
     }
     
-    public void exchangeCoin(){
-    }
+    
     
     public void showUser(){
     }

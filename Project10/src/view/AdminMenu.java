@@ -25,10 +25,10 @@ public class AdminMenu {
             choice = Inputter.inputInt(scanner, "Chon chuc nang: ");
             switch (choice) {
                 case 1:
-                    admin.dailyReward();
+                    admin.setDailyReward(scanner);
                     break;
                 case 2:
-                    admin.exchangeCoin();
+                    //admin.exchangeCoin();
                     break;
                 case 3:
                     admin.showUser();
