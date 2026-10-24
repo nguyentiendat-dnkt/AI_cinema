@@ -91,7 +91,7 @@ public class Movie {
     
    public void showMovie() {
         String priceText = isFree ? "Miễn phí" : moviePrice + " Coins";
-        System.out.printf("| %-8s | %-20s | %-12s | %-10s | %-10s | %-4d phút | %-15s |\n",
+        System.out.printf("| %-8s | %-20s | %-12s | %-10s | %-4d phút | %-15s |\n",
                 movieId, title, genre, priceText, duration, producer);
     }
     
