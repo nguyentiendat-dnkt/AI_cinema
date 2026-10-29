@@ -30,7 +30,7 @@ public class ContentManager extends Member{
         int duration = Inputter.inputInt(sc, "Nhap thoi luong (phut): ");
         String producer = Inputter.inputString(sc, "Nhap nha san xuat: ");
         
-        Movie newMovie = new Movie(id, title, genre, price, true, duration, producer);
+        Movie newMovie = new Movie(id, title, genre, price, (price == 0), duration, producer);
         movies.put(id, newMovie);
         
         System.out.println("Them phim thanh cong!");
