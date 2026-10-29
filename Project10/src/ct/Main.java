@@ -11,6 +11,7 @@ import java.util.HashMap;
 import model.Admin;
 import model.ContentManager;
 import model.Inputter;
+import model.Member;
 import view.UserMenu;
 import model.User;
 import model.Wallet;
@@ -30,10 +31,8 @@ public class Main {
         Scanner ns = new Scanner(System.in);
         UserMenu userMenu = new UserMenu();
         CmMenu cmMenu = new CmMenu();
-        ContentManager cm = new ContentManager();
         AdminMenu adMenu = new AdminMenu();
-        Admin admin = new Admin();
-        User user = new User("M1", "Dat", new Wallet(0, 0));
+        HashMap<String, User> userList = new HashMap<>();
         Membership plan = new Membership("Weekly", 30, false);
         HashMap<String, Movie> movies = new HashMap<>();
         int chon;
@@ -49,13 +48,13 @@ public class Main {
 
             switch (chon) {
                 case 1:
-                    userMenu.showUserMenu(ns, movies, user, plan);
+                    userMenu.loginUser(ns, movies, userList, plan);
                     break;
                 case 2:
-                    cmMenu.showCmMenu(ns, cm, movies);
+                    cmMenu.loginCm();
                     break;     
                 case 3:
-                    adMenu.showAdminMenu(ns, admin);
+                    adMenu.loginAdmin();
                     break;
                 case 0:
                     System.out.println("Tam biet!");

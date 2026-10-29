@@ -17,18 +17,18 @@ import model.User;
  */
 public class UserMenu {
     
-    public void showUserMenu(Scanner scanner, HashMap<String, Movie> movies, User user, Membership plan){
+    public void showUserMenu(Scanner scanner, HashMap<String, Movie> movies, HashMap<String, User> userList, User user, Membership plan){
         int choice;
         do {
             System.out.println("--------------------USER--------------------\n"
                              + "-    1. Xem danh sach phim                 -\n"
                              + "-    2. Mua phim                           -\n"
-                             + "-    3. Xem phim da mua                    -\n"
+                             + "-    3. Xem phim                           -\n"
                              + "-    4. Diem danh nhan coin                -\n"
                              + "-    5. Dang ky goi thanh vien             -\n"
                              + "-    6. Xem so du vi                       -\n"
                              + "-    7. Xem lich su giao dich              -\n"
-                             + "-    0. Quay lai menu truoc!               -\n"
+                             + "-    0. Thoat                              -\n"
                              + "--------------------------------------------\n");
             choice = Inputter.inputInt(scanner, "Chon chuc nang: ");
             switch (choice) {
@@ -62,16 +62,6 @@ public class UserMenu {
         } while (choice != 0);
     }
 
-    private void showMovieList(HashMap<String, Movie> movies) {
-        if (movies.isEmpty()) {
-            System.out.println("Kho phim hien dang rong!");
-        }else {
-            for (Movie movie : movies.values()) {
-                movie.showMovie();
-            }
-        }
-    }
-
     private void buyMovie(Scanner scanner, HashMap<String, Movie> movies, User user) {
         System.out.println("--- MUA PHIM ---");
         if (movies.isEmpty()) {
@@ -95,5 +85,24 @@ public class UserMenu {
         user.watchMovie(watchMovie);
     }
 
+    public void loginUser(Scanner scanner, HashMap<String, Movie> movies, HashMap<String, User> userList, Membership plan){
+        System.out.println("DANG NHAP");
+        // code chuc nang
+        regisUser(scanner, movies, userList, plan); // ko co thi tao tai khoan moi
+//        showUserMenu(scanner, movies, userList, user, plan); // show menu neu dang nhap thanh cong
+    }
+        
+    public void regisUser(Scanner scanner, HashMap<String, Movie> movies, HashMap<String, User> userList, Membership plan){
+        System.out.println("DANG KY");
+        //code chuc nang
+        loginUser(scanner, movies, userList, plan); //dang ky xong thi quay lai trang dang nhap
+    }
 
+    private void showMovieList(HashMap<String, Movie> movies) {
+        //tao menu
+        Movie.sortMvPriceAsc(movies);
+        Movie.sortMvPriceDesc(movies);
+        Movie.sortMvDurationAsc(movies);
+        Movie.sortMvDurationDesc(movies);
+    }
 }

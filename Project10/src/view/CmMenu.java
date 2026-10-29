@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import model.ContentManager;
 import model.Inputter;
+import model.Member;
 import model.Movie;
 
 /**
@@ -15,24 +16,28 @@ import model.Movie;
  * @author admin
  */
 public class CmMenu {
-    public void showCmMenu(Scanner scanner, ContentManager cm, HashMap<String, Movie> movies){
+    public void showCmMenu(Scanner scanner, ContentManager cm, Member member, HashMap<String, Movie> movies){
         int choice;
         do {
             System.out.println("----------CONTENT MANAGER----------\n"
-                             + "-       1. Them phim              -\n"
-                             + "-       2. Xoa phim               -\n"
-                             + "-       3. Chinh sua phim         -\n"
-                             + "-       0. Quay ve menu truoc     -\n"
+                             + "-       1. Xem danh sach phim     -\n"
+                             + "-       2. Them phim              -\n"
+                             + "-       3. Xoa phim               -\n"
+                             + "-       4. Chinh sua phim         -\n"
+                             + "-       0. Thoat                  -\n"
                              + "-----------------------------------\n");
             choice = Inputter.inputInt(scanner, "Chon chuc nang: ");
             switch (choice) {
                 case 1:
-                    cm.addMovie(scanner, movies);
+                    member.showMovieList(movies);
                     break;
                 case 2:
-                    cm.deleteMovie(scanner, movies);
+                    cm.addMovie(scanner, movies);
                     break;
                 case 3:
+                    cm.deleteMovie(scanner, movies);
+                    break;
+                case 4:
                     cm.editMovie(scanner, movies);
                     break;
                 case 0:
@@ -43,4 +48,10 @@ public class CmMenu {
             }
         } while (choice != 0);
     }
+
+
+    public void loginCm() {
+        //code
+    }
+
 }

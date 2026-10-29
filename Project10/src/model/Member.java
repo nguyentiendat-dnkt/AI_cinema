@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-import java.util.ArrayList;
+
+import java.util.HashMap;
 
 /**
  *
@@ -35,5 +36,15 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void showMovieList(HashMap<String, Movie> movies) {
+        if (movies.isEmpty()) {
+            System.out.println("Kho phim hien dang rong!");
+        }else {
+            for (Movie movie : movies.values()) {
+                movie.showMovie();
+            }
+        }
     }
 }

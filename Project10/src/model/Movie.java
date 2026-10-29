@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.HashMap;
+
 
 /**
  *
@@ -91,20 +93,24 @@ public class Movie {
     
    public void showMovie() {
         String priceText = isFree ? "Miễn phí" : moviePrice + " Coins";
-        System.out.printf("| %-8s | %-20s | %-12s | %-10s | %-10s | %-4d phút | %-15s |\n",
+        System.out.printf("| %-8s | %-20s | %-12s | %-10s | %-4d phút | %-15s |\n",
                 movieId, title, genre, priceText, duration, producer);
+    } 
+
+   public static void sortMvPriceAsc(HashMap<String, Movie> movies) {
+        //code
     }
-    
-   @Override
-    public String toString() {
-        return "Movie{" +
-                "movieId='" + movieId + '\'' +
-                ", title='" + title + '\'' +
-                ", genre='" + genre + '\'' +
-                ", moviePrice=" + (isFree ? 0 : moviePrice) +
-                ", isFree=" + isFree +
-                ", duration=" + duration + " mins" +
-                ", producer='" + producer + '\'' +
-                '}';
+
+    public static void sortMvPriceDesc(HashMap<String, Movie> movies) {
+        //code
     }
+
+    public static void sortMvDurationAsc(HashMap<String, Movie> movies) {
+        //code
+    }
+
+    public static void sortMvDurationDesc(HashMap<String, Movie> movies) {
+        //code
+    }
+
 }
