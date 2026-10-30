@@ -4,9 +4,12 @@
  */
 package view;
 
+import java.util.HashMap;
 import java.util.Scanner;
 import model.Admin;
+import model.ContentManager;
 import model.Inputter;
+import model.Movie;
 
 /**
  *
@@ -50,7 +53,21 @@ public class AdminMenu {
         } while (choice != 0);
     }
 
-    public void loginAdmin() {
-        //code
+    public void loginAdmin(Scanner sc, HashMap<String,Admin>adminList, HashMap<String,Movie>movie) {
+        System.out.println("Dang nhap Admin");
+        String id=Inputter.inputString(sc, "Nhap ID Admin: ");
+        
+        if(!adminList.containsKey(id)){
+            System.out.println("Tai khoan khong ton tai, vui long thu lai");
+            return;
+        }
+        Admin ad=adminList.get(id);
+        String pass= Inputter.inputString(sc,"Nhap mat khau: ");
+        if(!ad.getPassword().equals(pass)){
+            System.out.println("Sai mat khau, vui long thu lai");
+            return;
+        }
+        System.out.println("Dang nhap thanh cong vao tai khoan "+ ad.getName());
+        showAdminMenu(sc, ad);
     }
 }

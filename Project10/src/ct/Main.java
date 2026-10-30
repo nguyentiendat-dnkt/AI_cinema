@@ -33,8 +33,19 @@ public class Main {
         CmMenu cmMenu = new CmMenu();
         AdminMenu adMenu = new AdminMenu();
         HashMap<String, User> userList = new HashMap<>();
+        HashMap<String,ContentManager> cMList= new HashMap<>();
+        HashMap<String,Admin> adminList=new HashMap<>();
         Membership plan = new Membership("Weekly", 30, false);
         HashMap<String, Movie> movies = new HashMap<>();
+        ContentManager cM1= new ContentManager("cm1","Dat","123");
+        ContentManager cM2= new ContentManager("cm2","Huy","321");
+        Admin ad1=new Admin("ad1", "Cho Tinh", "1234");
+        User us1=new User("us1","Bunni","12345", new Wallet(0, 0));
+        cMList.put("cm1", cM1);
+        cMList.put("cm2", cM2);
+        adminList.put("ad1", ad1);
+        userList.put("us1", us1);
+        
         int chon;
         do {            
             System.out.println("----------HE THONG QUAN LY AI CINEMA----------\n"
@@ -48,13 +59,13 @@ public class Main {
 
             switch (chon) {
                 case 1:
-                    userMenu.loginUser(ns, movies, userList, plan);
+                    userMenu.showMenuLoginUser(ns, movies, userList, plan);
                     break;
                 case 2:
-                    cmMenu.loginCm();
+                    cmMenu.loginCm(ns, cMList, movies);
                     break;     
                 case 3:
-                    adMenu.loginAdmin();
+                    adMenu.loginAdmin(ns, adminList, movies);
                     break;
                 case 0:
                     System.out.println("Tam biet!");

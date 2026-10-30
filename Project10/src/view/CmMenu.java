@@ -10,6 +10,7 @@ import model.ContentManager;
 import model.Inputter;
 import model.Member;
 import model.Movie;
+import model.User;
 
 /**
  *
@@ -49,9 +50,22 @@ public class CmMenu {
         } while (choice != 0);
     }
 
-
-    public void loginCm() {
-        //code
+    public void loginCm(Scanner sc, HashMap<String,ContentManager>cMList, HashMap<String,Movie>movie) {
+        System.out.println("Dang nhap quan ly");
+        String id=Inputter.inputString(sc, "Nhap ID quan ly: ");
+        
+        if(!cMList.containsKey(id)){
+            System.out.println("Tai khoan khong ton tai, vui long thu lai");
+            return;
+        }
+        ContentManager cM=cMList.get(id);
+        String pass= Inputter.inputString(sc,"Nhap mat khau: ");
+        if(!cM.getPassword().equals(pass)){
+            System.out.println("Sai mat khau, vui long thu lai");
+            return;
+        }
+        System.out.println("Dang nhap thanh cong vao tai khoan "+ cM.getName());
+        showCmMenu(sc, cM, cM, movie);
     }
 
 }
