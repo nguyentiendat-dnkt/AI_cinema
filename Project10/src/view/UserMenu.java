@@ -16,7 +16,7 @@ import model.User;
  * @author Nguyen Kim Thuy Duon
  */
 public class UserMenu {
-    
+    Scanner ns = new Scanner(System.in);
     public void showUserMenu(Scanner scanner, HashMap<String, Movie> movies, HashMap<String, User> userList, User user, Membership plan){
         int choice;
         do {
@@ -33,7 +33,7 @@ public class UserMenu {
             choice = Inputter.inputInt(scanner, "Chon chuc nang: ");
             switch (choice) {
                 case 1:
-                    showMovieList(movies);
+                    showMovieList(ns, movies);
                     break;
                 case 2:
                     buyMovie(scanner, movies, user);
@@ -98,11 +98,37 @@ public class UserMenu {
         loginUser(scanner, movies, userList, plan); //dang ky xong thi quay lai trang dang nhap
     }
 
-    private void showMovieList(HashMap<String, Movie> movies) {
-        //tao menu
-        Movie.sortMvPriceAsc(movies);
-        Movie.sortMvPriceDesc(movies);
-        Movie.sortMvDurationAsc(movies);
-        Movie.sortMvDurationDesc(movies);
+    private void showMovieList(Scanner scanner, HashMap<String, Movie> movies) {
+        int choice;
+            do {
+            System.out.println("--------------------SORT--------------------\n"
+                             + "-    1. Highest - Lowest Price             -\n"
+                             + "-    2. Lowest - Highest Price             -\n"
+                             + "-    3. Longest - Shortest Duration        -\n"
+                             + "-    4. Shortest - Longest Duration         -\n"
+                             + "-    0. Thoat                              -\n"
+                             + "--------------------------------------------\n");
+            choice = Inputter.inputInt(scanner, "Chon bo loc: ");
+            switch (choice) {
+                case 1:
+                    Movie.sortMvPriceDesc(movies);
+                    break;
+                case 2:
+                    Movie.sortMvPriceAsc(movies);
+                    break;
+                case 3:
+                    Movie.sortMvDurationDesc(movies);
+                    break;
+                case 4:
+                    Movie.sortMvDurationAsc(movies);
+                    break;
+                case 0:
+                    System.out.println("Quay lai menu chon role");
+                    break;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ!");
+            }
+        } while (choice != 0);
     }
-}
+    }
+        
