@@ -44,7 +44,7 @@ public class Main {
                               +"-         0. Thoat chuong trinh              -\n"
                               +"----------------------------------------------\n");
             
-            chon = Inputter.inputInt(ns, "Ban la ai???: ");
+            chon = Inputter.inputInt(ns, "Select Role: ");
 
             switch (chon) {
                 case 1:
