@@ -6,12 +6,12 @@ package model;
 
 import java.util.HashMap;
 
-
 /**
  *
  * @author Nguyen Kim Thuy Duon
  */
 public class Movie {
+
     private String movieId;
     private String title;
     private String genre;
@@ -73,7 +73,6 @@ public class Movie {
         this.isFree = isFree;
     }
 
-
     public int getDuration() {
         return duration;
     }
@@ -89,15 +88,14 @@ public class Movie {
     public void setProducer(String producer) {
         this.producer = producer;
     }
-    
-    
-   public void showMovie() {
+
+    public void showMovie() {
         String priceText = isFree ? "Miễn phí" : moviePrice + " Coins";
         System.out.printf("| %-8s | %-20s | %-12s | %-10s | %-4d phút | %-15s |\n",
                 movieId, title, genre, priceText, duration, producer);
-    } 
+    }
 
-   public static void sortMvPriceAsc(HashMap<String, Movie> movies) {
+    public static void sortMvPriceAsc(HashMap<String, Movie> movies) {
         //code
     }
 
@@ -111,6 +109,11 @@ public class Movie {
 
     public static void sortMvDurationDesc(HashMap<String, Movie> movies) {
         //code
+    }
+
+    @Override
+    public String toString() {
+        return movieId + "," + title + "," + genre + "," + moviePrice + "," + isFree + "," + duration + "," + producer;
     }
 
 }
