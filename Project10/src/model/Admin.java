@@ -17,8 +17,12 @@ public class Admin extends Member{
         super();
     }
 
-    public Admin(int dailyReward, String memberId, String name) {
-        super(memberId, name);
+    public Admin(String memberId, String name, String password) {
+        super(memberId, name, password);
+    }
+
+    public Admin(int dailyReward, String memberId, String name, String password) {
+        super(memberId, name, password);
         this.dailyReward = dailyReward;
     }
 
