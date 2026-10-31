@@ -16,8 +16,8 @@ public class User extends Member{
     private Membership membership;
     private ArrayList<Transaction> transactions;
 
-    public User(String userId, String name, Wallet wallet) {
-        super(userId, name);
+    public User(String userId, String name,String password, Wallet wallet) {
+        super(userId, name, password);
         this.wallet = wallet;
         this.purchaseMovie = new ArrayList<>();
         this.membership = null;

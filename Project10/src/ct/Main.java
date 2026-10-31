@@ -4,6 +4,7 @@
  */
 package ct;
 
+import data.FileManage;
 import java.util.Scanner;
 import model.Membership;
 import model.Movie;
@@ -32,11 +33,24 @@ public class Main {
         UserMenu userMenu = new UserMenu();
         CmMenu cmMenu = new CmMenu();
         AdminMenu adMenu = new AdminMenu();
+        FileManage fm = new FileManage();
         HashMap<String, User> userList = new HashMap<>();
+        HashMap<String,ContentManager> cMList= new HashMap<>();
+        HashMap<String,Admin> adminList=new HashMap<>();
         Membership plan = new Membership("Weekly", 30, false);
         HashMap<String, Movie> movies = new HashMap<>();
+        ContentManager cM1= new ContentManager("cm1","Dat","123");
+        ContentManager cM2= new ContentManager("cm2","Huy","321");
+        Admin ad1=new Admin("ad1", "Cho Tinh", "1234");
+        User us1=new User("us1","Bunni","12345", new Wallet(0, 0));
+        cMList.put("cm1", cM1);
+        cMList.put("cm2", cM2);
+        adminList.put("ad1", ad1);
+        userList.put("us1", us1);
+        
         int chon;
-        do {            
+        do {   
+            fm.readFromFile(movies);
             System.out.println("----------HE THONG QUAN LY AI CINEMA----------\n"
                               +"-         1. USER                            -\n"
                               +"-         2. CONTENT MANAGEMENT              -\n"
@@ -44,19 +58,20 @@ public class Main {
                               +"-         0. Thoat chuong trinh              -\n"
                               +"----------------------------------------------\n");
             
-            chon = Inputter.inputInt(ns, "Ban la ai???: ");
+            chon = Inputter.inputInt(ns, "Select Role: ");
 
             switch (chon) {
                 case 1:
-                    userMenu.loginUser(ns, movies, userList, plan);
+                    userMenu.showMenuLoginUser(ns, movies, userList, plan);
                     break;
                 case 2:
-                    cmMenu.loginCm();
+                    cmMenu.loginCm(ns, cMList, movies);
                     break;     
                 case 3:
-                    adMenu.loginAdmin();
+                    adMenu.loginAdmin(ns, adminList, movies);
                     break;
                 case 0:
+                    fm.saveToFile(movies);
                     System.out.println("Tam biet!");
                     break;
                 default:

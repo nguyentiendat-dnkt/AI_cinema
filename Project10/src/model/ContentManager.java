@@ -17,8 +17,8 @@ public class ContentManager extends Member{
         super();
     }
     
-    public ContentManager(String memberId, String name){
-        super(memberId, name);
+    public ContentManager(String memberId, String name, String password){
+        super(memberId, name, password);
     }
     
     public void addMovie(Scanner sc, HashMap<String, Movie> movies){
