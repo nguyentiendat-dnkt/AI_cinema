@@ -17,7 +17,7 @@ public class AdminMenu {
         int choice;
         do {
             System.out.println("--------------------ADMIN--------------------\n"
-                             + "-       1. Thong ke so phim da duoc mua     -\n"
+                             + "-       1. Thong kee so phim da duoc mua     -\n"
                              + "-       2. Dinh gia coin                    -\n"
                              + "-       3. Xem thong tin user               -\n"
                              + "-       4. Xem tat ca lich su giao dich     -\n"
