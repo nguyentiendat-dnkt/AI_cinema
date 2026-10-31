@@ -4,6 +4,7 @@
  */
 package ct;
 
+import data.FileManage;
 import java.util.Scanner;
 import model.Membership;
 import model.Movie;
@@ -32,6 +33,7 @@ public class Main {
         UserMenu userMenu = new UserMenu();
         CmMenu cmMenu = new CmMenu();
         AdminMenu adMenu = new AdminMenu();
+        FileManage fm = new FileManage();
         HashMap<String, User> userList = new HashMap<>();
         HashMap<String,ContentManager> cMList= new HashMap<>();
         HashMap<String,Admin> adminList=new HashMap<>();
@@ -47,7 +49,8 @@ public class Main {
         userList.put("us1", us1);
         
         int chon;
-        do {            
+        do {   
+            fm.readFromFile(movies);
             System.out.println("----------HE THONG QUAN LY AI CINEMA----------\n"
                               +"-         1. USER                            -\n"
                               +"-         2. CONTENT MANAGEMENT              -\n"
@@ -68,6 +71,7 @@ public class Main {
                     adMenu.loginAdmin(ns, adminList, movies);
                     break;
                 case 0:
+                    fm.saveToFile(movies);
                     System.out.println("Tam biet!");
                     break;
                 default:
