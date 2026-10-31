@@ -48,9 +48,9 @@ public class Main {
         adminList.put("ad1", ad1);
         userList.put("us1", us1);
         
+        fm.readFromFile(movies);
         int chon;
-        do {   
-            fm.readFromFile(movies);
+        do {
             System.out.println("----------HE THONG QUAN LY AI CINEMA----------\n"
                               +"-         1. USER                            -\n"
                               +"-         2. CONTENT MANAGEMENT              -\n"
@@ -65,10 +65,10 @@ public class Main {
                     userMenu.showMenuLoginUser(ns, movies, userList, plan);
                     break;
                 case 2:
-                    cmMenu.loginCm(ns, cMList, movies);
+                    cmMenu.showCmMenu(ns, cM2, cM2, movies);
                     break;     
                 case 3:
-                    adMenu.loginAdmin(ns, adminList, movies);
+                    adMenu.showAdminMenu(ns, ad1, userList);
                     break;
                 case 0:
                     fm.saveToFile(movies);
