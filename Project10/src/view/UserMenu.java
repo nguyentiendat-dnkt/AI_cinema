@@ -60,7 +60,7 @@ public class UserMenu {
             choice = Inputter.inputInt(scanner, "Chon chuc nang: ");
             switch (choice) {
                 case 1:
-                    showMovieList(movies);
+                    showMovieList(scanner, movies);
                     break;
                 case 2:
                     buyMovie(scanner, movies, user);
@@ -144,12 +144,47 @@ public class UserMenu {
         System.out.println("Tao tai khoan thanh cong");
     }
 
-    private void showMovieList(HashMap<String, Movie> movies) {
-        //tao menu
-        Movie.sortMvPriceAsc(movies);
-        Movie.sortMvPriceDesc(movies);
-        Movie.sortMvDurationAsc(movies);
-        Movie.sortMvDurationDesc(movies);
+    private void showMovieList(Scanner ns, HashMap<String, Movie> movies) {
+        int choice;
+
+        do {
+            System.out.println("--------------------SORT MOVIE--------------------\n"
+                             + "-    1. Sap xep gia tang dan                       -\n"
+                             + "-    2. Sap xep gia giam dan                       -\n"
+                             + "-    3. Sap xep thoi luong tang dan                -\n"
+                             + "-    4. Sap xep thoi luong giam dan                -\n"
+                             + "-    0. Quay lai menu User                         -\n"
+                             + "--------------------------------------------------\n");
+
+            choice = Inputter.inputInt(ns, "Chon cach sap xep: ");
+
+            switch (choice) {
+                case 1:
+                    Movie.sortMvPriceAsc(movies);
+                    break;
+
+                case 2:
+                    Movie.sortMvPriceDesc(movies);
+                    break;
+
+                case 3:
+                    Movie.sortMvDurationAsc(movies);
+                    break;
+
+                case 4:
+                    Movie.sortMvDurationDesc(movies);
+                    break;
+
+                case 0:
+                    System.out.println("Quay lai menu User");
+                    break;
+
+                default:
+                    System.out.println("Lua chon khong hop le!");
+                    break;
+            }
+
+        } while (choice != 0);
     }
 
 }
