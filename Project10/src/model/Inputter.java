@@ -26,7 +26,6 @@ public class Inputter {
                 return kq;
             } catch (Exception e) {
                 System.out.println("Ban da nhap sai. Vui long nhap lai!");
-                sc.nextLine();
             }
         } while (lap);
         return kq;

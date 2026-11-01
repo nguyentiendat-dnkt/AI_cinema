@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -136,6 +138,7 @@ public class Movie {
             movie.showMovie();
         }
     }
+
 
     @Override
     public String toString() {
