@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -96,20 +98,47 @@ public class Movie {
     }
 
     public static void sortMvPriceAsc(HashMap<String, Movie> movies) {
-        //code
-    }
+        ArrayList<Movie> list = new ArrayList<>(movies.values());
 
+        list.sort(Comparator.comparingInt(Movie::getMoviePrice));
+
+        for (Movie movie : list) {
+            movie.showMovie();
+        }
+    }
+    // Gia giam dan
     public static void sortMvPriceDesc(HashMap<String, Movie> movies) {
-        //code
+        ArrayList<Movie> list = new ArrayList<>(movies.values());
+
+        list.sort(Comparator.comparingInt(Movie::getMoviePrice).reversed());
+
+        for (Movie movie : list) {
+            movie.showMovie();
+        }
     }
 
+    // Thoi luong tang dan
     public static void sortMvDurationAsc(HashMap<String, Movie> movies) {
-        //code
+        ArrayList<Movie> list = new ArrayList<>(movies.values());
+
+        list.sort(Comparator.comparingInt(Movie::getDuration));
+
+        for (Movie movie : list) {
+            movie.showMovie();
+        }
     }
 
+    // Thoi luong giam dan
     public static void sortMvDurationDesc(HashMap<String, Movie> movies) {
-        //code
+        ArrayList<Movie> list = new ArrayList<>(movies.values());
+
+        list.sort(Comparator.comparingInt(Movie::getDuration).reversed());
+
+        for (Movie movie : list) {
+            movie.showMovie();
+        }
     }
+
 
     @Override
     public String toString() {
