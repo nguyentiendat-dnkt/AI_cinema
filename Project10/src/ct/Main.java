@@ -65,10 +65,10 @@ public class Main {
                     userMenu.showMenuLoginUser(ns, movies, userList, plan);
                     break;
                 case 2:
-                    cmMenu.showCmMenu(ns, cM2, cM2, movies);
+                    cmMenu.loginCm(ns, cMList, movies);
                     break;     
                 case 3:
-                    adMenu.showAdminMenu(ns, ad1, userList);
+                    adMenu.loginAdmin(ns, adminList, userList, movies);
                     break;
                 case 0:
                     fm.saveToFile(movies);
