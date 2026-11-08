@@ -15,7 +15,6 @@ import model.Inputter;
 import model.Transaction;
 import view.UserMenu;
 import model.User;
-import model.Wallet;
 import view.AdminMenu;
 import view.CmMenu;
 

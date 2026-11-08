@@ -53,6 +53,7 @@ public class Member {
         if (movies.isEmpty()) {
             System.out.println("Kho phim hien dang rong!");
         }else {
+            Movie.printMovieHeader();
             for (Movie movie : movies.values()) {
                 movie.showMovie();
             }

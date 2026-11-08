@@ -93,7 +93,7 @@ public class Movie {
 
     public void showMovie() {
         String priceText = isFree ? "Miễn phí" : moviePrice + " Coins";
-        System.out.printf("| %-8s | %-20s | %-12s | %-10s | %-4d phút | %-15s |\n",
+        System.out.printf("| %-8s | %-20s | %-12s | %-10s | %-4d phút | %-20s |\n",
                 movieId, title, genre, priceText, duration, producer);
     }
 
@@ -101,7 +101,7 @@ public class Movie {
         ArrayList<Movie> list = new ArrayList<>(movies.values());
 
         list.sort(Comparator.comparingInt(Movie::getMoviePrice));
-
+        printMovieHeader();
         for (Movie movie : list) {
             movie.showMovie();
         }
@@ -111,7 +111,7 @@ public class Movie {
         ArrayList<Movie> list = new ArrayList<>(movies.values());
 
         list.sort(Comparator.comparingInt(Movie::getMoviePrice).reversed());
-
+        printMovieHeader();
         for (Movie movie : list) {
             movie.showMovie();
         }
@@ -122,7 +122,7 @@ public class Movie {
         ArrayList<Movie> list = new ArrayList<>(movies.values());
 
         list.sort(Comparator.comparingInt(Movie::getDuration));
-
+        printMovieHeader();
         for (Movie movie : list) {
             movie.showMovie();
         }
@@ -133,11 +133,19 @@ public class Movie {
         ArrayList<Movie> list = new ArrayList<>(movies.values());
 
         list.sort(Comparator.comparingInt(Movie::getDuration).reversed());
-
+        printMovieHeader();
         for (Movie movie : list) {
             movie.showMovie();
         }
     }
+    
+    
+    public static void printMovieHeader() {
+    
+    System.out.printf("| %-8s | %-20s | %-12s | %-10s | %-9s | %-20s |\n", 
+                        "ID", "Movie Title", "Genre", "Price", "Duration", "Producer");
+    System.out.println("-------------------------------------------------------------------------------------------------");
+}
 
 
     @Override
