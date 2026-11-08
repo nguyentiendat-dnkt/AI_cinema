@@ -33,9 +33,9 @@ public class FileManage {
                     bw.newLine();
                 }
             }
-            System.out.println("Ghi file thanh cong");
+            System.out.println("Ghi file ds Movie thanh cong");
         } catch (IOException e) {
-            System.out.println("Loi");
+            System.out.println("Loi ghi file Movie");
         }
     }
 
@@ -54,7 +54,7 @@ public class FileManage {
                     }
                 }
             }
-            System.out.println("Doc file thanh cong");
+            System.out.println("Doc file Movie thanh cong");
         } catch (IOException e) {
         }
 
@@ -76,7 +76,7 @@ public class FileManage {
                 return new Movie(movieId, title, genre, moviePrice, isFree, duration, producer);
             }
         } catch (NumberFormatException e) {
-            System.out.println("Loi");
+            System.out.println("Loi doc file Movie");
         }
         return null;
     }
@@ -91,9 +91,9 @@ public class FileManage {
                     bw.newLine();
                 }
             }
-            System.out.println("Ghi file thanh cong");
+            System.out.println("Ghi file ds Movie da mua thanh cong");
         } catch (IOException e) {
-            System.out.println("Loi");
+            System.out.println("Loi ghi file ds Movie da mua");
         }
     }
 
@@ -112,7 +112,7 @@ public class FileManage {
                     }
                 }
             }
-            System.out.println("Doc file thanh cong");
+            System.out.println("Doc file ds Movie da mua thanh cong");
         } catch (IOException e) {
         }
 
@@ -134,7 +134,7 @@ public class FileManage {
                 return new Movie(movieId, title, genre, moviePrice, isFree, duration, producer);
             }
         } catch (NumberFormatException e) {
-            System.out.println("Loi");
+            System.out.println("Loi doc ds Movie da mua");
         }
         return null;
     }
@@ -149,9 +149,9 @@ public class FileManage {
                     bw.newLine();
                 }
             }
-            System.out.println("Ghi file thanh cong");
+            System.out.println("Ghi file ds User thanh cong");
         } catch (IOException e) {
-            System.out.println("Loi");
+            System.out.println("Loi ghi file ds User");
         }
     }
 
@@ -170,7 +170,7 @@ public class FileManage {
                     }
                 }
             }
-            System.out.println("Doc file thanh cong");
+            System.out.println("Doc file User thanh cong");
         } catch (IOException e) {
         }
 
@@ -189,24 +189,26 @@ public class FileManage {
                 return new User(memberId, name, password, wallet);
             }
         } catch (NumberFormatException e) {
-            System.out.println("Lỗi parse data user: " + tam);
+            System.out.println("Loi doc file User");
         }
         return null;
     }
 
     //Lich su giao dich
-    public void saveToFileTH(HashMap<String, Transaction> tr) {
+    public void saveToFileTH(HashMap<String, User> userList) {
         try {
             File f = new File("./transaction_his.csv");
             try ( FileWriter fw = new FileWriter(f);  BufferedWriter bw = new BufferedWriter(fw)) {
-                for (Transaction t : tr.values()) {
+                for (User u : userList.values()) {
+                    for (Transaction t : u.getTransactions()) {
                     bw.write(t.toString());
                     bw.newLine();
                 }
+                }
             }
-            System.out.println("Ghi file thanh cong");
+            System.out.println("Ghi file lich su giao dich thanh cong");
         } catch (IOException e) {
-            System.out.println("Loi");
+            System.out.println("Loi ghi file lich su giao dich");
         }
     }
 
@@ -225,7 +227,7 @@ public class FileManage {
                     }
                 }
             }
-            System.out.println("Doc file thanh cong");
+            System.out.println("Doc file lich su giao dich thanh cong");
         } catch (IOException e) {
         }
 
@@ -235,7 +237,7 @@ public class FileManage {
         try {
             String[] temp = tam.split(",");
 
-            if (temp.length >= 5) {
+            if (temp.length >= 4) {
                 String transId = temp[0];
                 String transType = temp[1];
                 int amount = Integer.parseInt(temp[2]);
@@ -244,7 +246,7 @@ public class FileManage {
                 return new Transaction(transId, transType, amount, date);
             }
         } catch (NumberFormatException e) {
-            System.out.println("Loi");
+            System.out.println("Loi doc file lich su giao dich");
         }
         return null;
     }

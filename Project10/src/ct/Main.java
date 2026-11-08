@@ -44,11 +44,9 @@ public class Main {
         ContentManager cM1 = new ContentManager("cm1", "Dat", "123");
         ContentManager cM2 = new ContentManager("cm2", "Huy", "321");
         Admin ad1 = new Admin("ad1", "Cho Tinh", "1234");
-        User us1 = new User("us1", "Bunni", "12345", new Wallet(0, 0));
         cMList.put("cm1", cM1);
         cMList.put("cm2", cM2);
         adminList.put("ad1", ad1);
-        userList.put("us1", us1);
 
         fm.readFromFileM(movies);
         fm.readFromFilePM(Purmovies);
@@ -78,7 +76,7 @@ public class Main {
                 case 0:
                     fm.saveToFileM(movies);
                     fm.saveToFilePM(Purmovies);
-                    fm.saveToFileTH(tr);
+                    fm.saveToFileTH(userList);
                     fm.saveToFileU(userList);
                     System.out.println("Tam biet!");
                     break;

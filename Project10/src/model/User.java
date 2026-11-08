@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -12,10 +13,10 @@ import java.util.ArrayList;
  */
 public class User extends Member {
 
-    private Wallet wallet;
-    private ArrayList<Movie> purchaseMovie;
+    private final Wallet wallet;
+    private final ArrayList<Movie> purchaseMovie;
     private Membership membership;
-    private ArrayList<Transaction> transactions;
+    private final ArrayList<Transaction> transactions;
 
     public User(String userId, String name, String password, Wallet wallet) {
         super(userId, name, password);
@@ -60,7 +61,7 @@ public class User extends Member {
         } else {
             purchaseMovie.add(mv);
             String transId = "T" + (transactions.size() + 1);
-            transactions.add(new Transaction(transId, "MUA_PHIM", -mv.getMoviePrice()));
+            transactions.add(new Transaction(transId, "MUA_PHIM", -mv.getMoviePrice(), LocalDate.now()));
 
             System.out.println("Mua phim " + mv.getTitle() + " thanh cong!");
             return true;
@@ -85,7 +86,7 @@ public class User extends Member {
         int dailyReward = 10;
         wallet.addBonusCoin(dailyReward);
         String transId = "T" + (transactions.size() + 1);
-        transactions.add(new Transaction(transId, "DIEM_DANH", dailyReward));
+        transactions.add(new Transaction(transId, "DIEM_DANH", dailyReward, LocalDate.now()));
         System.out.println("Diem danh thanh cong");
     }
 
@@ -101,7 +102,7 @@ public class User extends Member {
         membership = memsPlan;
         memsPlan.active();
         String transId = "T" + (transactions.size() + 1);
-        transactions.add(new Transaction(transId, "DANG_KY_GOI", -memsPlan.getMemsPrice()));
+        transactions.add(new Transaction(transId, "DANG_KY_GOI", -memsPlan.getMemsPrice(), LocalDate.now()));
         System.out.println("Dang ky goi thanh vien thanh cong!");
         return true;
     }
@@ -114,7 +115,7 @@ public class User extends Member {
         }
         for (int i = 0; i < transactions.size(); i++) {
             Transaction t = transactions.get(i);
-            System.out.println(t.getTransId() + " | " + t.getTransType() + " | " + t.getAmount() + " | " + t.getDate() + " | " + t.getTime());
+            System.out.println(t.getTransId() + " | " + t.getTransType() + " | " + t.getAmount() + " | " + t.getDate());
         }
     }
 

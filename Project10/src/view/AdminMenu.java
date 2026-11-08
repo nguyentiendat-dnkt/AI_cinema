@@ -120,7 +120,7 @@ public class AdminMenu {
                     System.out.println("   [" + t.getTransId() + "] " 
                                      + t.getTransType() + " | " 
                                      + t.getAmount() + " coins | Ngay: " 
-                                     + t.getDate() + " " + t.getTime());
+                                     + t.getDate());
                 }
             }
         }

@@ -17,7 +17,6 @@ public class Transaction {
     private String transType;
     private int amount;
     private LocalDate date;
-    private LocalDateTime time;
 
     public Transaction() {
     }
@@ -34,7 +33,6 @@ public class Transaction {
         this.transType = transType;
         this.amount = amount;
         this.date = LocalDate.now();
-        this.time = LocalDateTime.now();
     }
 
     public String getTransId() {
@@ -69,17 +67,9 @@ public class Transaction {
         this.date = date;
     }
 
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
-        this.time = time;
-    }
-
     @Override
     public String toString() {
-        return transId + ", " + transType + ", " + amount + ", " + date + ", " + time;
+        return transId + ", " + transType + ", " + amount + ", " + date;
     }
 
 }
