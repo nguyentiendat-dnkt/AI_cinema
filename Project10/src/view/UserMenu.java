@@ -17,46 +17,48 @@ import model.Wallet;
  * @author Nguyen Kim Thuy Duon
  */
 public class UserMenu {
-    
+
     public void showMenuLoginUser(Scanner ns, HashMap<String, Movie> movies, HashMap<String, User> userList, Membership plan) {
 
         int choice;
         do {
             System.out.println("--------------BANG DANG NHAP USER-------------\n"
-                              +"-         1. DANG NHAP                       -\n"
-                              +"-         2. DANG KY                         -\n"
-                              +"-         0. QUAY LAI MENU CHINH             -\n"
-                              +"----------------------------------------------\n");
-            choice=Inputter.inputInt(ns,"Nhap lua chon cua ban: ");
-            switch(choice){
-               case 1:
-                   loginUser(ns, movies, userList, plan);
-                   break;
-               case 2:
-                   regisUser(ns, movies, userList, plan);
-                   break;
-               case 0:
-                   return;
-               default:
-                   System.out.println("Du lieu khong hop le");
-                   break;
+                    + "-         1. DANG NHAP                       -\n"
+                    + "-         2. DANG KY                         -\n"
+                    + "-         0. QUAY LAI MENU CHINH             -\n"
+                    + "----------------------------------------------\n");
+            choice = Inputter.inputInt(ns, "Nhap lua chon cua ban: ");
+            switch (choice) {
+                case 1:
+                    loginUser(ns, movies, userList, plan);
+                    break;
+                case 2:
+                    regisUser(ns, movies, userList, plan);
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.println("Du lieu khong hop le");
+                    break;
             }
-            
+
         } while (choice != 0);
     }
-    public void showUserMenu(Scanner scanner, HashMap<String, Movie> movies, HashMap<String, User> userList, User user, Membership plan){
+
+    public void showUserMenu(Scanner scanner, HashMap<String, Movie> movies, HashMap<String, User> userList, User user, Membership plan) {
         int choice;
         do {
             System.out.println("--------------------USER--------------------\n"
-                             + "-    1. Xem danh sach phim                 -\n"
-                             + "-    2. Mua phim                           -\n"
-                             + "-    3. Xem phim                           -\n"
-                             + "-    4. Diem danh nhan coin                -\n"
-                             + "-    5. Dang ky goi thanh vien             -\n"
-                             + "-    6. Xem so du vi                       -\n"
-                             + "-    7. Xem lich su giao dich              -\n"
-                             + "-    0. Thoat                              -\n"
-                             + "--------------------------------------------\n");
+                    + "-    1. Xem danh sach phim                 -\n"
+                    + "-    2. Mua phim                           -\n"
+                    + "-    3. Xem phim                           -\n"
+                    + "-    4. Diem danh nhan coin                -\n"
+                    + "-    5. Dang ky goi thanh vien             -\n"
+                    + "-    6. Xem so du vi                       -\n"
+                    + "-    7. Nap coin                           -\n"
+                    + "-    8. Xem lich su giao dich              -\n"
+                    + "-    0. Thoat                              -\n"
+                    + "--------------------------------------------\n");
             choice = Inputter.inputInt(scanner, "Chon chuc nang: ");
             switch (choice) {
                 case 1:
@@ -78,6 +80,10 @@ public class UserMenu {
                     user.getWallet().showWalletInfo();
                     break;
                 case 7:
+                    int coin = Inputter.inputInt(scanner, "Nhap so coin muon nap: ");
+                    user.getWallet().addCoin(coin);
+                    break;
+                case 8:
                     user.viewTransactionHistory();
                     break;
                 case 0:
@@ -112,34 +118,34 @@ public class UserMenu {
         user.watchMovie(watchMovie);
     }
 
-    public void loginUser(Scanner scanner, HashMap<String, Movie> movies, HashMap<String, User> userList, Membership plan){
+    public void loginUser(Scanner scanner, HashMap<String, Movie> movies, HashMap<String, User> userList, Membership plan) {
         System.out.println("DANG NHAP");
-        String id=Inputter.inputString(scanner, "Nhap ID nguoi dung: ");
-        if(!userList.containsKey(id)){
+        String id = Inputter.inputString(scanner, "Nhap ID nguoi dung: ");
+        if (!userList.containsKey(id)) {
             System.out.println("Tai khoan khong ton tai, vui long thu lai hoac tao tai khoan");
             return;
         }
-        User u=userList.get(id);
-        String pass= Inputter.inputString(scanner,"Nhap mat khau: ");
-        if(!u.getPassword().equals(pass)){
+        User u = userList.get(id);
+        String pass = Inputter.inputString(scanner, "Nhap mat khau: ");
+        if (!u.getPassword().equals(pass)) {
             System.out.println("Sai mat khau, vui long thu lai");
             return;
         }
-        System.out.println("Dang nhap thanh cong vao tai khoan "+ u.getName());
+        System.out.println("Dang nhap thanh cong vao tai khoan " + u.getName());
         showUserMenu(scanner, movies, userList, u, plan);
     }
-        
-    public void regisUser(Scanner scanner, HashMap<String, Movie> movies, HashMap<String, User> userList, Membership plan){
+
+    public void regisUser(Scanner scanner, HashMap<String, Movie> movies, HashMap<String, User> userList, Membership plan) {
         System.out.println("DANG KY");
-        String id=Inputter.inputString(scanner, "Nhap ID: ");
-        
-        if (userList.containsKey(id)){
+        String id = Inputter.inputString(scanner, "Nhap ID: ");
+
+        if (userList.containsKey(id)) {
             System.out.println("Nguoi dung da ton tai, vui long tao lai");
             return;
         }
-        String name=Inputter.inputString(scanner,"Nhap ten nguoi dung: ");
-        String password=Inputter.inputString(scanner, "Nhap mat khau: ");
-        User u= new User(id, name, password, new Wallet(0, 0));
+        String name = Inputter.inputString(scanner, "Nhap ten nguoi dung: ");
+        String password = Inputter.inputString(scanner, "Nhap mat khau: ");
+        User u = new User(id, name, password, new Wallet(0, 0));
         userList.put(id, u);
         System.out.println("Tao tai khoan thanh cong");
     }
@@ -149,12 +155,12 @@ public class UserMenu {
 
         do {
             System.out.println("--------------------SORT MOVIE--------------------\n"
-                             + "-    1. Sap xep gia tang dan                       -\n"
-                             + "-    2. Sap xep gia giam dan                       -\n"
-                             + "-    3. Sap xep thoi luong tang dan                -\n"
-                             + "-    4. Sap xep thoi luong giam dan                -\n"
-                             + "-    0. Quay lai menu User                         -\n"
-                             + "--------------------------------------------------\n");
+                    + "-    1. Sap xep gia tang dan                       -\n"
+                    + "-    2. Sap xep gia giam dan                       -\n"
+                    + "-    3. Sap xep thoi luong tang dan                -\n"
+                    + "-    4. Sap xep thoi luong giam dan                -\n"
+                    + "-    0. Quay lai menu User                         -\n"
+                    + "--------------------------------------------------\n");
 
             choice = Inputter.inputInt(ns, "Chon cach sap xep: ");
 

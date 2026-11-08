@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
  * @author Nguyen Kim Thuy Duon
  */
 public class Transaction {
+
     private String transId;
     private String transType;
     private int amount;
@@ -22,6 +23,13 @@ public class Transaction {
     }
 
     public Transaction(String transId, String transType, int amount) {
+        this.transId = transId;
+        this.transType = transType;
+        this.amount = amount;
+    }
+    
+    
+    public Transaction(String transId, String transType, int amount, LocalDate date) {
         this.transId = transId;
         this.transType = transType;
         this.amount = amount;
@@ -68,6 +76,10 @@ public class Transaction {
     public void setTime(LocalDateTime time) {
         this.time = time;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return transId + ", " + transType + ", " + amount + ", " + date + ", " + time;
+    }
+
 }
