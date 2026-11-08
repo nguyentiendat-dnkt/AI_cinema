@@ -12,10 +12,9 @@ import java.util.HashMap;
 import model.Admin;
 import model.ContentManager;
 import model.Inputter;
-import model.Member;
+import model.Transaction;
 import view.UserMenu;
 import model.User;
-import model.Wallet;
 import view.AdminMenu;
 import view.CmMenu;
 
@@ -34,30 +33,33 @@ public class Main {
         CmMenu cmMenu = new CmMenu();
         AdminMenu adMenu = new AdminMenu();
         FileManage fm = new FileManage();
+        HashMap<String, Movie> Purmovies = new HashMap<>();
+        HashMap<String, Transaction> tr = new HashMap<>();
         HashMap<String, User> userList = new HashMap<>();
-        HashMap<String,ContentManager> cMList= new HashMap<>();
-        HashMap<String,Admin> adminList=new HashMap<>();
+        HashMap<String, ContentManager> cMList = new HashMap<>();
+        HashMap<String, Admin> adminList = new HashMap<>();
         Membership plan = new Membership("Weekly", 30, false);
         HashMap<String, Movie> movies = new HashMap<>();
-        ContentManager cM1= new ContentManager("cm1","Dat","123");
-        ContentManager cM2= new ContentManager("cm2","Huy","321");
-        Admin ad1=new Admin("ad1", "Cho Tinh", "1234");
-        User us1=new User("us1","Bunni","12345", new Wallet(0, 0));
+        ContentManager cM1 = new ContentManager("cm1", "Dat", "123");
+        ContentManager cM2 = new ContentManager("cm2", "Huy", "321");
+        Admin ad1 = new Admin("ad1", "Cho Tinh", "1234");
         cMList.put("cm1", cM1);
         cMList.put("cm2", cM2);
         adminList.put("ad1", ad1);
-        userList.put("us1", us1);
-        
-        fm.readFromFile(movies);
+
+        fm.readFromFileM(movies);
+        fm.readFromFilePM(Purmovies);
+        fm.readFromFileTH(tr);
+        fm.readFromFileU(userList);
         int chon;
         do {
             System.out.println("----------HE THONG QUAN LY AI CINEMA----------\n"
-                              +"-         1. USER                            -\n"
-                              +"-         2. CONTENT MANAGEMENT              -\n"
-                              +"-         3. ADMIN                           -\n"
-                              +"-         0. Thoat chuong trinh              -\n"
-                              +"----------------------------------------------\n");
-            
+                    + "-         1. USER                            -\n"
+                    + "-         2. CONTENT MANAGEMENT              -\n"
+                    + "-         3. ADMIN                           -\n"
+                    + "-         0. Thoat chuong trinh              -\n"
+                    + "----------------------------------------------\n");
+
             chon = Inputter.inputInt(ns, "Select Role: ");
 
             switch (chon) {
@@ -66,12 +68,15 @@ public class Main {
                     break;
                 case 2:
                     cmMenu.loginCm(ns, cMList, movies);
-                    break;     
+                    break;
                 case 3:
                     adMenu.loginAdmin(ns, adminList, userList, movies);
                     break;
                 case 0:
-                    fm.saveToFile(movies);
+                    fm.saveToFileM(movies);
+                    fm.saveToFilePM(Purmovies);
+                    fm.saveToFileTH(userList);
+                    fm.saveToFileU(userList);
                     System.out.println("Tam biet!");
                     break;
                 default:
@@ -82,4 +87,4 @@ public class Main {
         ns.close();
     }
 
-}   
+}

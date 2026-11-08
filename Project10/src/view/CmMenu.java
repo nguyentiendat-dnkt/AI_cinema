@@ -10,7 +10,6 @@ import model.ContentManager;
 import model.Inputter;
 import model.Member;
 import model.Movie;
-import model.User;
 
 /**
  *

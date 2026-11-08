@@ -5,9 +5,13 @@
         <group>
             <file>file:/C:/Users/admin/Documents/Project10/Project10/src/view/UserMenu.java</file>
             <file>file:/C:/Users/admin/Documents/Project10/Project10/src/view/AdminMenu.java</file>
+            <file>file:/C:/Users/admin/Documents/Project10/Project10/src/view/CmMenu.java</file>
             <file>file:/C:/Users/admin/Documents/Project10/Project10/src/ct/Main.java</file>
             <file>file:/C:/Users/admin/Documents/Project10/Project10/src/model/Movie.java</file>
             <file>file:/C:/Users/admin/Documents/Project10/Project10/src/data/FileManage.java</file>
+            <file>file:/C:/Users/admin/Documents/Project10/Project10/src/model/User.java</file>
+            <file>file:/C:/Users/admin/Documents/Project10/Project10/src/model/Member.java</file>
+            <file>file:/C:/Users/admin/Documents/Project10/Project10/src/model/Transaction.java</file>
         </group>
     </open-files>
 </project-private>
